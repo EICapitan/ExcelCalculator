@@ -1,17 +1,17 @@
 Dim num1 As Double
 Dim num2 As Double
-Dim char As String
+Dim chr As String
 Dim res As Boolean
 
 Function calc_last()
     num2 = textfrm.Text
-    
-    If char = "*" Then
+
+    If chr = "*" Then
         num1 = num1 * num2
         num2 = 0
     End If
-    
-    If char = "/" Then
+
+    If chr = "/" Then
         If num2 = "0" Then
             textfrm.Text = "Err: DV/0"
         Else
@@ -19,13 +19,13 @@ Function calc_last()
             num2 = 0
         End If
     End If
-    
-    If char = "-" Then
+
+    If chr = "-" Then
         num1 = num1 - num2
         num2 = 0
     End If
-    
-    If char = "+" Then
+
+    If chr = "+" Then
         num1 = num1 + num2
         num2 = 0
     End If
@@ -164,17 +164,17 @@ End Sub
 Private Sub bclr_Click()
     num1 = 0
     num2 = 0
-    char = ""
+    chr = ""
     textfrm.Text = "0"
     res = False
 End Sub
 
 Private Sub bins_Click()
     On Error GoTo except
-        Range(insertbox.Text).Value = textfrm.Text
-        Exit Sub
+    Range(insertbox.Text).Value = textfrm.Text
+    Exit Sub
 except:
-        insertbox.Text = "Err"
+    insertbox.Text = "Err"
 End Sub
 
 Private Sub bptr_Click()
@@ -185,15 +185,15 @@ End Sub
 
 Private Sub br_Click()
     num2 = textfrm.Text
-    
-    If char = "*" Then
+
+    If chr = "*" Then
         textfrm.Text = num1 * num2
         res = True
         num1 = 0
         num2 = 0
     End If
-    
-    If char = "/" Then
+
+    If chr = "/" Then
         If num2 = "0" Then
             textfrm.Text = "Err: DV/0"
         Else
@@ -203,15 +203,15 @@ Private Sub br_Click()
             num2 = 0
         End If
     End If
-    
-    If char = "-" Then
+
+    If chr = "-" Then
         textfrm.Text = num1 - num2
         res = True
         num1 = 0
         num2 = 0
     End If
-    
-    If char = "+" Then
+
+    If chr = "+" Then
         textfrm.Text = num1 + num2
         res = True
         num1 = 0
@@ -222,15 +222,15 @@ End Sub
 Private Sub bym_Click()
     If num1 = 0 Then
         num1 = textfrm.Text
-        char = "*"
+        chr = "*"
         textfrm.Text = "0"
     Else
-        calc_last
+        calc_last()
         num2 = textfrm.Text
         textfrm.Text = "0"
-        char = "*"
+        chr = "*"
     End If
-    
+
     If res Then
         res = False
     End If
@@ -239,15 +239,15 @@ End Sub
 Private Sub bdv_Click()
     If num1 = 0 Then
         num1 = textfrm.Text
-        char = "/"
+        chr = "/"
         textfrm.Text = "0"
     Else
-        calc_last
+        calc_last()
         num2 = textfrm.Text
         textfrm.Text = "0"
-        char = "/"
+        chr = "/"
     End If
-    
+
     If res Then
         res = False
     End If
@@ -256,15 +256,15 @@ End Sub
 Private Sub bp_Click()
     If num1 = 0 Then
         num1 = textfrm.Text
-        char = "+"
+        chr = "+"
         textfrm.Text = "0"
     Else
-        calc_last
+        calc_last()
         num2 = textfrm.Text
         textfrm.Text = "0"
-        char = "+"
+        chr = "+"
     End If
-    
+
     If res Then
         res = False
     End If
@@ -273,15 +273,15 @@ End Sub
 Private Sub bm_Click()
     If num1 = 0 Then
         num1 = textfrm.Text
-        char = "-"
+        chr = "-"
         textfrm.Text = "0"
     Else
-        calc_last
+        calc_last()
         num2 = textfrm.Text
         textfrm.Text = "0"
-        char = "-"
+        chr = "-"
     End If
-    
+
     If res Then
         res = False
     End If
@@ -295,5 +295,5 @@ Private Sub bperc_Click()
 End Sub
 
 Private Sub bactinsert_Click()
-        ActiveCell.Value = textfrm.Text
+    ActiveCell.Value = textfrm.Text
 End Sub
