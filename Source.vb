@@ -178,9 +178,7 @@ except:
 End Sub
 
 Private Sub bptr_Click()
-    If textfrm.Text > 0 Then
-        textfrm.Text = textfrm.Text + "."
-    End If
+    textfrm.Text = textfrm.Text + "."
 End Sub
 
 Private Sub br_Click()
@@ -272,16 +270,20 @@ End Sub
 
 Private Sub bm_Click()
     If num1 = 0 Then
-        num1 = textfrm.Text
-        chr = "-"
-        textfrm.Text = "0"
+        If textfrm.Text = 0 Then
+            textfrm.Text = "-"
+        Else
+            num1 = textfrm.Text
+            char = "-"
+            textfrm.Text = "0"
+        End If
     Else
-        calc_last()
+        calc_last
         num2 = textfrm.Text
         textfrm.Text = "0"
-        chr = "-"
+        char = "-"
     End If
-
+    
     If res Then
         res = False
     End If
